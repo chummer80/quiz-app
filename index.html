@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>QUIZ</title>
+	<title>NBA QUIZ</title>
 	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="css/main.css">
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -10,8 +10,39 @@
 </head>
 <body>
 	<header>
-		
+		<div id="title_container">
+			<img id="logo" src="images/nba_logo.png">
+			<h1 id="title">NBA Quiz</h1>
+			<img id="logo" src="images/nba_logo.png">
+		</div>
 	</header>
-
+	<main>
+		<div id="question_panel" class="basketball_shaped_panel current_panel">
+			<div class="alignment_container">
+				<div class="alignment_container_spacer"></div>
+				<div class="quiz_text">
+					<p><span id="question_number">1. </span>QUESTION HERE!</p>
+					<ul>
+						<li>answer 1</li>
+						<li>answer 2</li>
+						<li>answer 3</li>
+						<li>answer 4</li>
+					</ul>
+				</div>
+				<div class="alignment_container_spacer"></div>
+			</div>
+		</div>
+		<div id="answer_container" class="basketball_shaped_panel next_panel">
+			<div class="alignment_container">
+				<div class="alignment_container_spacer"></div>
+				<div class="quiz_text">
+					<p>INCORRECT!</p>
+					<p>Correct answer was BLEH</p>
+					<p>Additional Information right here.</p>
+				</div>
+				<div class="alignment_container_spacer"></div>
+			</div>
+		</div>
+	</main>
 </body>
 </html>

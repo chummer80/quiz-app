@@ -3,7 +3,7 @@
 *	quizQuestion CLASS CONSTRUCTOR
 **********************************/
 
-function quizQuestion (question, choices, answerIndex) {
+function quizQuestion (question, choices, answerIndex, additionalInfo) {
 	// validate constructor arguments and initialize private members
 	
 	console.assert(typeof question == "string", "quizQuestion constructor: 'question' must be a string");
@@ -18,6 +18,9 @@ function quizQuestion (question, choices, answerIndex) {
 	
 	console.assert(choices[answerIndex], "quizQuestion constructor: 'answerIndex' must be a valid index of the 'choices' array");
 	var correctAnswerIndex = answerIndex;
+	
+	console.assert(typeof additionalInfo == "string", "quizQuestion constructor: 'additionalInfo' must be a string");
+	var extraInfo = additionalInfo;
 	
 	// accessor functions
 	
@@ -35,5 +38,9 @@ function quizQuestion (question, choices, answerIndex) {
 	
 	this.getAnswer = function getAnswer() {
 		return choiceTextArray[correctAnswerIndex];
+	};
+	
+	this.getExtraInfo = function getExtraInfo() {
+		return extraInfo;
 	};
 }

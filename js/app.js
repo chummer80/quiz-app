@@ -81,21 +81,27 @@ $(document).ready(function () {
 	// move the given panel to the middle of the screen if focused = true
 	// otherwise move it off of the screen.
 	var rollPanel = function rollPanel(panel) {
+		var revealInteractiveElements = function revealInteractiveElements() {
+			panel.find('.quiz_text').show();
+			panel.find('#continue_button').show();
+		};
+		// hide interactive parts of the panel so they don't get clicked too early
+		panel.find('.quiz_text').hide();
+		panel.find('#continue_button').hide();
+		
 		if (panel.hasClass('offscreen_left_panel')) {
-			// panel.removeClass('offscreen_left_panel');
-			// panel.addClass('onscreen_panel');
-			panel.switchClass('offscreen_left_panel', 'onscreen_panel', 1500);
+			panel.switchClass('offscreen_left_panel', 'onscreen_panel', 1500, revealInteractiveElements);
 		}
 		else if (panel.hasClass('onscreen_panel')) {
-			// panel.removeClass('onscreen_panel');
-			// panel.addClass('offscreen_left_panel');
 			panel.switchClass('onscreen_panel', 'offscreen_right_panel', 1500, function() {
 				// after animation, invisibly move the panel off the left side of the screen
 				// so it will be prepared to roll on-screen next time.
 				panel.removeClass('offscreen_right_panel');
 				panel.addClass('offscreen_left_panel');
+				revealInteractiveElements();
 			});
 		}
+		
 	};
 	
 	var updateScore = function updateScore() {

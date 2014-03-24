@@ -92,7 +92,7 @@ $(document).ready(function () {
 		else if (panel.hasClass('onscreen_panel')) {
 			panel.find('.quiz_text').hide('puff');
 			panel.find('#continue_button').hide('puff');
-			startSpin(panel);
+			panel.addClass('spinning');
 			panel.switchClass('onscreen_panel', 'offscreen_right_panel', 1500, function() {
 				panel.removeClass('spinning');
 				// after animation, invisibly move the panel off the left side of the screen

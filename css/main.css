@@ -48,8 +48,6 @@ h1 {
 }
 
 #title {
-	display: inline;
-	position: relative;
 }
 
 main {
@@ -148,6 +146,7 @@ main {
 }
 
 .nav_button {
+	display: block;
 	position: relative;
 	bottom: 4em;
 	width: 35%;

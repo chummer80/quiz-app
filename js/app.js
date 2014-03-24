@@ -80,14 +80,21 @@ $(document).ready(function () {
 	
 	// move the given panel to the middle of the screen if focused = true
 	// otherwise move it off of the screen.
-	var setPanelFocus = function setPanelFocus(panel, focused) {
-		if (focused) {
-			panel.removeClass('next_panel');
-			panel.addClass('current_panel');
+	var rollPanel = function rollPanel(panel) {
+		if (panel.hasClass('offscreen_left_panel')) {
+			// panel.removeClass('offscreen_left_panel');
+			// panel.addClass('onscreen_panel');
+			panel.switchClass('offscreen_left_panel', 'onscreen_panel', 1500);
 		}
-		else {
-			panel.removeClass('current_panel');
-			panel.addClass('next_panel');
+		else if (panel.hasClass('onscreen_panel')) {
+			// panel.removeClass('onscreen_panel');
+			// panel.addClass('offscreen_left_panel');
+			panel.switchClass('onscreen_panel', 'offscreen_right_panel', 1500, function() {
+				// after animation, invisibly move the panel off the left side of the screen
+				// so it will be prepared to roll on-screen next time.
+				panel.removeClass('offscreen_right_panel');
+				panel.addClass('offscreen_left_panel');
+			});
 		}
 	};
 	
@@ -113,8 +120,11 @@ $(document).ready(function () {
 		answerPanelQuizText.show();
 		continueButton.show();
 		
-		setPanelFocus(questionPanel, false);
-		setPanelFocus(answerPanel, true);
+		rollPanel(questionPanel);
+		rollPanel(answerPanel);
+		// questionPanel.removeClass('onscreen_panel');
+		// questionPanel.addClass('offscreen_right_panel');
+		// questionPanel.switchClass('onscreen_panel', 'offscreen_right_panel');
 	}
 	
 	// Either go to the next question, or show a game over message
@@ -129,8 +139,8 @@ $(document).ready(function () {
 			populateQuestionPanel(questionNum, quizQuestions[questionNum-1]);
 			questionPanelQuizText.show();
 			
-			setPanelFocus(answerPanel, false);
-			setPanelFocus(questionPanel, true);		
+			rollPanel(answerPanel);
+			rollPanel(questionPanel);		
 		}
 		else {
 			// no more questions, show game over message
@@ -183,12 +193,16 @@ $(document).ready(function () {
 	var resetQuiz = function resetQuiz() {
 		// reset visuals
 		questionPanelQuizText.hide();
-		setPanelFocus(questionPanel, true);
+		questionPanel.removeClass('offscreen_left_panel');
+		questionPanel.removeClass('offscreen_right_panel');
+		questionPanel.addClass('onscreen_panel');
 				
 		answerPanelQuizText.hide();
 		continueButton.hide();
 		newGameButton.hide();
-		setPanelFocus(answerPanel, false);
+		answerPanel.removeClass('onscreen_panel');
+		answerPanel.removeClass('offscreen_right_panel');
+		answerPanel.addClass('offscreen_left_panel');
 		
 		// reset game data
 		questionNum = 0;

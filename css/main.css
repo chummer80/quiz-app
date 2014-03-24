@@ -5,7 +5,7 @@
 body {
 	font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
 	width: 100%;
-	min-width: 80em;
+	min-width: 80rem;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -13,14 +13,14 @@ body {
 header {
 	background-color: lightgrey;
 	background-size: auto 100%;
-	height: 5em;
+	height: 5rem;
 	width: 100%;
 	border-bottom: 0.3em solid black;
 }
 
 #title_container {
 	height: 100%;
-	width: 40em; 
+	width: 40rem; 
  	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -34,7 +34,7 @@ header {
 	position: absolute;
 	top: 0%;
 	right: 0%;
-	margin: 1em;
+	margin: 1rem;
 	color: white;
 }
 
@@ -43,7 +43,7 @@ header {
 }
 
 h1 {
-	font-size: 3em;
+	font-size: 3rem;
 	font-weight: bold;
 }
 
@@ -51,12 +51,13 @@ h1 {
 }
 
 main {
-	height: 50em;
+	height: 50rem;
 	background-image: url('../images/basketball_court.jpg');
 	background-size: cover;
-	padding-top: 2em;
-	padding-bottom: 2em;
+	padding-top: 2rem;
+	padding-bottom: 2rem;
 	position: relative;
+	overflow: hidden;
 }
 
 @-webkit-keyframes spin {
@@ -65,12 +66,13 @@ main {
 }
 
 .basketball_shaped_panel {
+	position: absolute;
 	background-image: url('../images/basketball.png');
 	background-size: 100%;
 	background-repeat: no-repeat;
 	border-radius: 50%;
-	width: 50em;
-	height: 50em;
+	width: 50rem;
+	height: 50rem;
 	
 /*  	-webkit-animation-name: spin;
 	-webkit-animation-duration: 3s; 
@@ -79,16 +81,23 @@ main {
 	-webkit-animation-play-state:paused; */
 }
 
-.current_panel {
-	position: static;
+.onscreen_panel {
+	
+	left: 0rem;
+	right: 0rem;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-.next_panel {
-	position: absolute;
-	left: -50em;
-	top: 2em;
+.offscreen_left_panel {
+	left: -55rem;
+}
+
+.offscreen_right_panel {
+	left: 0rem;
+	right: -175rem;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 #answer_panel {
@@ -111,7 +120,7 @@ main {
 
 .quiz_text {
 	flex-grow: 0;
-	font-size: 3em;
+	font-size: 3rem;
 	font-weight: bold;
 	color: white;
 	-webkit-text-stroke-width: 2px;
@@ -125,7 +134,7 @@ main {
 
 #question_text {
 	/* text-align: center; */
-	margin-bottom: 0.7em;
+	margin-bottom: 0.7rem;
 }
 
 #choice_list {
@@ -146,21 +155,21 @@ main {
 }
 
 #result {
-	margin-bottom: 0.7em;
+	margin-bottom: 0.7rem;
 }
 
 .nav_button {
 	display: block;
 	position: relative;
-	bottom: 4em;
+	bottom: 7rem;
 	width: 35%;
-	height: 2em;
+	height: 3rem;
 	border-radius: 15px;
 	margin-left: auto;
 	margin-right: auto;
 	
 	font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
-	font-size: 2em;
+	font-size: 2rem;
 	font-weight: bold;
 	color: white;
 	

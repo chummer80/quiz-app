@@ -7,7 +7,7 @@ $(document).ready(function () {
 	var quizQuestions = [];
 
 	quizQuestions.push(new quizQuestion(
-		"Who was the inventor of the game of basketball?",
+		"Who invented the game of basketball?",
 		[
 			"James Naismith",
 			"Larry O'Brien",
@@ -82,7 +82,9 @@ $(document).ready(function () {
 	// otherwise move it off of the screen.
 	var rollPanel = function rollPanel(panel) {
 		if (panel.hasClass('offscreen_left_panel')) {
+			panel.addClass('spinning');
 			panel.switchClass('offscreen_left_panel', 'onscreen_panel', 1500, function() {
+				panel.removeClass('spinning');
 				panel.find('.quiz_text').show('puff');
 				panel.find('#continue_button').show('puff');
 			});
@@ -90,7 +92,9 @@ $(document).ready(function () {
 		else if (panel.hasClass('onscreen_panel')) {
 			panel.find('.quiz_text').hide('puff');
 			panel.find('#continue_button').hide('puff');
+			startSpin(panel);
 			panel.switchClass('onscreen_panel', 'offscreen_right_panel', 1500, function() {
+				panel.removeClass('spinning');
 				// after animation, invisibly move the panel off the left side of the screen
 				// so it will be prepared to roll on-screen next time.
 				panel.removeClass('offscreen_right_panel');

@@ -60,6 +60,10 @@ main {
 	overflow: hidden;
 }
 
+@keyframes spin {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}
 @-webkit-keyframes spin {
 	from { -webkit-transform: rotate(0deg); }
 	to { -webkit-transform: rotate(360deg); }
@@ -73,12 +77,19 @@ main {
 	border-radius: 50%;
 	width: 50rem;
 	height: 50rem;
-	
-/*  	-webkit-animation-name: spin;
-	-webkit-animation-duration: 3s; 
-	-webkit-animation-iteration-count: 1; 
-	-webkit-animation-timing-function: linear;
-	-webkit-animation-play-state:paused; */
+}
+
+.spinning {
+	animation-name: spin;
+	animation-duration: 2s; 
+	animation-iteration-count: infinite; 
+	animation-timing-function: linear;
+	animation-play-state: running;
+  	-webkit-animation-name: spin;
+	-webkit-animation-duration: 2s; 
+	-webkit-animation-iteration-count: infinite; 
+	-webkit-animation-timing-function: linear; 
+	-webkit-animation-play-state: running;
 }
 
 .onscreen_panel {

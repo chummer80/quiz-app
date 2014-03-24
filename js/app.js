@@ -39,16 +39,16 @@ $(document).ready(function () {
 			"1976"
 		],
 		3,
-		"The NBA and ABA merged in 1976. This added 4 new teams to the NBA: the Denver Nuggets, the Indiana Pacers, the New Jersey Nets, and the San Antonio Spurs."
+		"The NBA and ABA merged in 1976. This added 4 new teams to the NBA: the Denver Nuggets, Indiana Pacers, New Jersey Nets, and San Antonio Spurs."
 	));
 
 	quizQuestions.push(new quizQuestion(
 		"Which NBA team has won the most championships?",
 		[
-			"The Los Angeles Lakers",
-			"The Chicago Bulls",
-			"The San Antonio Spurs",
-			"The Boston Celtics"
+			"Los Angeles Lakers",
+			"Chicago Bulls",
+			"San Antonio Spurs",
+			"Boston Celtics"
 		],
 		3,
 		"The Boston Celtics have won 17 championships, the most of any team in the NBA. From 1959-1966 they won 8 in a row!"
@@ -81,27 +81,22 @@ $(document).ready(function () {
 	// move the given panel to the middle of the screen if focused = true
 	// otherwise move it off of the screen.
 	var rollPanel = function rollPanel(panel) {
-		var revealInteractiveElements = function revealInteractiveElements() {
-			panel.find('.quiz_text').show();
-			panel.find('#continue_button').show();
-		};
-		// hide interactive parts of the panel so they don't get clicked too early
-		panel.find('.quiz_text').hide();
-		panel.find('#continue_button').hide();
-		
 		if (panel.hasClass('offscreen_left_panel')) {
-			panel.switchClass('offscreen_left_panel', 'onscreen_panel', 1500, revealInteractiveElements);
+			panel.switchClass('offscreen_left_panel', 'onscreen_panel', 1500, function() {
+				panel.find('.quiz_text').show('puff');
+				panel.find('#continue_button').show('puff');
+			});
 		}
 		else if (panel.hasClass('onscreen_panel')) {
+			panel.find('.quiz_text').hide('puff');
+			panel.find('#continue_button').hide('puff');
 			panel.switchClass('onscreen_panel', 'offscreen_right_panel', 1500, function() {
 				// after animation, invisibly move the panel off the left side of the screen
 				// so it will be prepared to roll on-screen next time.
 				panel.removeClass('offscreen_right_panel');
 				panel.addClass('offscreen_left_panel');
-				revealInteractiveElements();
 			});
 		}
-		
 	};
 	
 	var updateScore = function updateScore() {
@@ -120,11 +115,11 @@ $(document).ready(function () {
 		}
 		updateScore();
 		
-		questionPanelQuizText.hide();
+		// questionPanelQuizText.hide('puff');
 		
 		populateAnswerPanel(answeredCorrectly, quizQuestions[questionNum-1]);
-		answerPanelQuizText.show();
-		continueButton.show();
+		// answerPanelQuizText.show('puff');
+		// continueButton.show('puff');
 		
 		rollPanel(questionPanel);
 		rollPanel(answerPanel);
@@ -139,22 +134,25 @@ $(document).ready(function () {
 			// Quiz is still going, show the next question
 			questionNum++;
 			
-			answerPanelQuizText.hide();
-			continueButton.hide();
+			// answerPanelQuizText.hide('puff');
+			// continueButton.hide('puff');
 			
 			populateQuestionPanel(questionNum, quizQuestions[questionNum-1]);
-			questionPanelQuizText.show();
+			// questionPanelQuizText.show('puff');
 			
 			rollPanel(answerPanel);
 			rollPanel(questionPanel);		
 		}
 		else {
 			// no more questions, show game over message
-			answerPanelQuizText.find('#result').text("GAME OVER");
-			answerPanelQuizText.find('#extra_info').text("Score: " + numCorrectAnswers + " out of " + quizQuestions.length);
-			
-			continueButton.hide();
-			newGameButton.show();
+			continueButton.hide('puff');
+			answerPanelQuizText.hide('puff', function() {
+				answerPanelQuizText.find('#result').text("GAME OVER");
+				answerPanelQuizText.find('#extra_info').text("Score: " + numCorrectAnswers + " out of " + quizQuestions.length);
+				
+				newGameButton.show('puff');
+				answerPanelQuizText.show('puff');
+			});
 		}
 	};
 	
@@ -221,7 +219,7 @@ $(document).ready(function () {
 	var startQuiz = function startQuiz() {
 		questionNum = 1;
 		populateQuestionPanel(questionNum, quizQuestions[questionNum-1]);		
-		questionPanelQuizText.show();
+		questionPanelQuizText.delay(500).show('puff');
 	};
 	
 		
@@ -232,8 +230,11 @@ $(document).ready(function () {
 	continueButton.click(continueQuiz);
 	
 	newGameButton.click(function() {
-		resetQuiz();
-		startQuiz();
+		answerPanelQuizText.hide('puff');
+		newGameButton.hide('puff', function() {
+			resetQuiz();
+			startQuiz();
+		});
 	});
 	
 	/************************

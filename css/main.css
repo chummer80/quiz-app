@@ -3,7 +3,6 @@
 }
 
 body {
-/* 	font-family: Tahoma, Verdana, Segoe, sans-serif; */
 	font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
 	width: 100%;
 	min-width: 80em;
@@ -47,11 +46,6 @@ h1 {
 
 main {
 	height: 50em;
-	/* background-image: -o-linear-gradient(bottom, black 0%, grey 100%);
-	background-image: -moz-linear-gradient(bottom, black 0%, grey 100%);
-	background-image: -webkit-linear-gradient(bottom, black 0%, grey 100%);
-	background-image: -ms-linear-gradient(bottom, black 0%, grey 100%);
-	background-image: linear-gradient(to bottom, black 0%, grey 100%); */
 	background-image: url('../images/basketball_court.jpg');
 	background-size: cover;
 	padding-top: 2em;
@@ -72,11 +66,11 @@ main {
 	width: 50em;
 	height: 50em;
 	
-/* 	-webkit-animation-name: spin;  */
-	-webkit-animation-duration: 5s; 
-	-webkit-animation-iteration-count: infinite; 
+/*  	-webkit-animation-name: spin;
+	-webkit-animation-duration: 3s; 
+	-webkit-animation-iteration-count: 1; 
 	-webkit-animation-timing-function: linear;
-	
+	-webkit-animation-play-state:paused; */
 }
 
 .current_panel {
@@ -91,12 +85,15 @@ main {
 	top: 2em;
 }
 
+#answer_panel {
+	text-align: center;
+}
+
 .alignment_container {
 	height: 100%;
-	width: 75%;
+	width: 65%;
 	margin-left: auto;
 	margin-right: auto;
-/* 	text-align: center; */
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -114,7 +111,25 @@ main {
 	-webkit-text-stroke-width: 2px;
 	-webkit-text-stroke-color: black; 
 	
-	
 	margin-left: auto;
 	margin-right: auto;
+	
+	display: none; 
+}
+
+#question_text {
+	/* text-align: center; */
+	margin-bottom: 0.7em;
+}
+
+#choice_list {
+	counter-reset: choice;
+/* 	width: 80%;
+	margin-left: auto;
+	margin-right: auto; */
+}
+
+.quiz_choice:before {
+	content: counter(choice, upper-alpha) ". ";
+	counter-increment: choice;
 }

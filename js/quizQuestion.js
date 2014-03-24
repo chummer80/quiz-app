@@ -1,6 +1,6 @@
 
 /*********************************
-*	quizQuestion CLASS CONSTRUCTOR
+*	quizQuestion class definition
 **********************************/
 
 function quizQuestion (question, choices, answerIndex, additionalInfo) {

@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="css/main.css">
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="js/quizQuestion.js"></script>
+	<script src="js/quizQuestions.js"></script>
 	<script src="js/app.js"></script>
 </head>
 <body>
@@ -19,14 +20,16 @@
 		</div>
 	</header>
 	<main>
+		<h1 id="score">Score: 0 / 0</h1>
 		<div id="question_panel" class="basketball_shaped_panel current_panel">
 			<div class="alignment_container">
 				<div class="alignment_container_spacer"></div>
 				<div class="quiz_text">
 					<p id="question_text">
-						<span id="question_number">1. </span>QUESTION HERE!
+						<span id="question_number">1. </span>
+						QUESTION HERE!
 					</p>
-					<ol type="A" id="choice_list">
+					<ol id="choice_list">
 						<li class="quiz_choice">answer 1</li>
 						<li class="quiz_choice">answer 2</li>
 						<li class="quiz_choice">answer 3</li>
@@ -40,11 +43,13 @@
 			<div class="alignment_container">
 				<div class="alignment_container_spacer"></div>
 				<div class="quiz_text">
-					<p id="result">INCORRECT!</p>
+					<p id="result">RESULT!</p>
 					<p id="extra_info">Additional Information right here.</p>
 				</div>
 				<div class="alignment_container_spacer"></div>
 			</div>
+			<input id="continue_button" class="nav_button" type="submit" value="Continue">
+			<input id="new_game_button" class="nav_button" type="submit" value="New Game">
 		</div>
 	</main>
 </body>

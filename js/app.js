@@ -174,7 +174,6 @@ $(document).ready(function () {
 			
 			resetQuiz: function() { 
 				questionNum = 1;
-
 				numCorrectAnswers = 0;
 			},
 			
@@ -196,6 +195,8 @@ $(document).ready(function () {
 	
 	var continueButton = answerPanel.find($('#continue_button'));
 	var newGameButton = answerPanel.find($('#new_game_button'));
+	
+	var scoreBoard = $('#score');
 
 	/************************
 	*	 FUNCTIONS
@@ -258,9 +259,13 @@ $(document).ready(function () {
 	};
 	
 	var updateScore = function updateScore() {
-		$('#score').text("Score: " + quizModule.getScore() + " / " + quizModule.getQuestionNum());
+		scoreBoard.text("Score: " + quizModule.getScore() + " / " + quizModule.getQuestionNum());
 	};
 	
+	var resetScore = function resetScore() {
+		scoreBoard.text("Score: 0 / 0");
+	};
+		
 	// a quiz choice was selected. submit the choice to see if it was right.
 	var submitChoice = function submitChoice() {
 		// check which quiz choice element was clicked.
@@ -363,10 +368,10 @@ $(document).ready(function () {
 		answerPanel.removeClass('offscreen_right_panel');
 		answerPanel.addClass('offscreen_left_panel');
 		
+		resetScore();
+		
 		// reset game data
 		quizModule.resetQuiz();
-		
-		updateScore();
 	};
 	
 	// start new game

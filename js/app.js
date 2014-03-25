@@ -78,20 +78,50 @@ $(document).ready(function () {
 	*	 FUNCTIONS
 	************************/
 	
+	var stopSounds = function stopSounds() {
+		$('audio').each(function(index, element) {
+			element.pause();
+		});		
+	};
+	
+	var playSound = function playSound(soundName) {
+		//stop all other sounds that are playing so they don't overlap
+		stopSounds();
+		
+		var soundElement = $('#' + soundName + '_sound')[0];
+		soundElement.load();
+		soundElement.play();
+	};
+	
 	// move the given panel to the middle of the screen if focused = true
 	// otherwise move it off of the screen.
-	var rollPanel = function rollPanel(panel) {
+	var rollPanel = function rollPanel(panel, answeredCorrectly) {
 		if (panel.hasClass('offscreen_left_panel')) {
+			playSound('dribbling');
 			panel.addClass('spinning', 0);
 			panel.switchClass('offscreen_left_panel', 'onscreen_panel', 1500, function() {
 				panel.removeClass('spinning', 0);
 				panel.find('.quiz_text').show('puff');
-				panel.find('#continue_button').show('puff');
+				// if the panel rolling onscreen is the answer panel, play the appropriate sound for right/wrong answer
+				if (panel == answerPanel) {
+					panel.find('#continue_button').show('puff');
+					if (answeredCorrectly) {
+						playSound('swish');
+					}
+					else {
+						playSound('miss_shot');
+					}
+				}
+				else {
+					stopSounds();
+				}
 			});
 		}
 		else if (panel.hasClass('onscreen_panel')) {
+			if (panel == answerPanel) {
+				panel.find('#continue_button').hide('puff');
+			}
 			panel.find('.quiz_text').hide('puff');
-			panel.find('#continue_button').hide('puff');
 			panel.addClass('spinning', 0);
 			panel.switchClass('onscreen_panel', 'offscreen_right_panel', 1500, function() {
 				panel.removeClass('spinning', 0);
@@ -119,17 +149,10 @@ $(document).ready(function () {
 		}
 		updateScore();
 		
-		// questionPanelQuizText.hide('puff');
-		
 		populateAnswerPanel(answeredCorrectly, quizQuestions[questionNum-1]);
-		// answerPanelQuizText.show('puff');
-		// continueButton.show('puff');
 		
 		rollPanel(questionPanel);
-		rollPanel(answerPanel);
-		// questionPanel.removeClass('onscreen_panel');
-		// questionPanel.addClass('offscreen_right_panel');
-		// questionPanel.switchClass('onscreen_panel', 'offscreen_right_panel');
+		rollPanel(answerPanel, answeredCorrectly);
 	}
 	
 	// Either go to the next question, or show a game over message
@@ -138,14 +161,10 @@ $(document).ready(function () {
 			// Quiz is still going, show the next question
 			questionNum++;
 			
-			// answerPanelQuizText.hide('puff');
-			// continueButton.hide('puff');
-			
 			populateQuestionPanel(questionNum, quizQuestions[questionNum-1]);
-			// questionPanelQuizText.show('puff');
 			
 			rollPanel(answerPanel);
-			rollPanel(questionPanel);		
+			rollPanel(questionPanel);
 		}
 		else {
 			// no more questions, show game over message
@@ -155,7 +174,16 @@ $(document).ready(function () {
 				answerPanelQuizText.find('#extra_info').text("Score: " + numCorrectAnswers + " out of " + quizQuestions.length);
 				
 				newGameButton.show('puff');
-				answerPanelQuizText.show('puff');
+				answerPanelQuizText.show('puff', function() {
+					if (numCorrectAnswers < (quizQuestions.length / 2)) {
+						// player did badly and should be booed
+						playSound('boo');
+					}
+					else {
+						//player did well and should be cheered
+						playSound('cheer');
+					}
+				});
 			});
 		}
 	};

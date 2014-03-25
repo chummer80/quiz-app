@@ -33,9 +33,9 @@ $(document).ready(function () {
 	quizQuestions.push(new quizQuestion(
 		"In what year did the NBA merge with the American Basketball Association (ABA)?",
 		[
-			"1966",
-			"1969",
-			"1972",
+			"1958",
+			"1963",
+			"1970",
 			"1976"
 		],
 		3,
@@ -52,6 +52,114 @@ $(document).ready(function () {
 		],
 		3,
 		"The Boston Celtics have won 17 championships, the most of any team in the NBA. From 1959-1966 they won 8 in a row!"
+	));
+	
+	quizQuestions.push(new quizQuestion(
+		"Which of the following players was nicknamed \"The Human Highlight Film\"?",
+		[
+			"George Gervin",
+			"Dominique Wilkins",
+			"Shaquille O'Neal",
+			"Michael Jordan"
+		],
+		1,
+		"Known for his powerful windmill dunks, Dominique Wilkins was nicknamed \"The Human Highlight Film\". He is the all-time leading scorer in Atlanta Hawks history."
+	));
+
+	quizQuestions.push(new quizQuestion(
+		"Who is the shortest player ever to play in the NBA?",
+		[
+			"Muggsy Bogues",
+			"Spud Webb",
+			"Earl Boykins",
+			"Manute Bol",
+		],
+		0,
+		"The shortest NBA player ever was 5'3\" Tyrone \"Muggsy\" Bogues. In 1987-1988, he and one of the tallest players in NBA history (7'7\" Gheorghe Muresan) were teammates."
+	));
+
+	quizQuestions.push(new quizQuestion(
+		"Which of the current NBA teams has the worst franchise winning percentage?",
+		[
+			"Charlotte Bobcats",
+			"Minnesota Timberwolves",
+			"Los Angeles Clippers",
+			"Memphis Grizzlies",
+		],
+		0,
+		"The Charlotte Bobcats, the most recently founded team in the league, has an abysmal 35.9% franchise winning percentage."
+	));
+	
+	quizQuestions.push(new quizQuestion(
+		"Which NBA sportscaster first coined the term \"slam dunk\"?",
+		[
+			"Dick Stockton",
+			"Marv Albert",
+			"Tommy Heinsohn",
+			"Chick Hearn",
+		],
+		3,
+		"Legendary Laker play-by-play announcer Francis \"Chick\" Hearn was the first to use the term \"slam dunk\". Before that, it was known as a \"dunk shot\"."
+	));
+	
+	quizQuestions.push(new quizQuestion(
+		"Combining salary and endorsement deals, who is the highest-paid NBA player of 2014?",
+		[
+			"Lebron James",
+			"Kobe Bryant",
+			"Kevin Durant",
+			"Derrick Rose",
+		],
+		1,
+		"Kobe Bryant's combined $64.5 million total earnings barely edge out Lebron James' $61.1 million total earnings."
+	));
+	
+	quizQuestions.push(new quizQuestion(
+		"1992 was the first year in which NBA players were permitted to play in the Olympics. Which of these players was not on that team (known as the \"Dream Team\")?",
+		[
+			"Clyde Drexler",
+			"Karl Malone",
+			"Hakeem Olajuwon",
+			"Scottie Pippen",
+		],
+		2,
+		"Hakeem Olajuwon was part of the 1996 Olympic team, but not the 1992 team. The 1992 Dream Team beat their opponents by an average of 43.8 points per game!"
+	));
+	
+	quizQuestions.push(new quizQuestion(
+		"In the longest game in NBA history, how many overtime periods were played?",
+		[
+			"5",
+			"6",
+			"7",
+			"8",
+		],
+		1,
+		"On January 6, 1951, the Indianapolis Olympians defeated the Rochester Royals 75-73 in 6 overtimes. That's 78 minutes of basketball!"
+	));
+	
+	quizQuestions.push(new quizQuestion(
+		"In the highest-scoring game in NBA history, what was the number of points scored by both teams combined?",
+		[
+			"300",
+			"337",
+			"356",
+			"370",
+		],
+		3,
+		"On December 13, 1983, the Detroit Pistons defeated the Denver Nuggets 186–184. (370 combined points)"
+	));
+	
+	quizQuestions.push(new quizQuestion(
+		"Of all the international (non-American) players who have ever played in the NBA, which nationality has been the most common?",
+		[
+			"Spanish",
+			"Canadian",
+			"Australian",
+			"French",
+		],
+		1,
+		"There have been 24 Canadian players in NBA history. Canadian Hank Biasatti became the first ever international player when he joined the league in 1946."
 	));
 
 	/************************

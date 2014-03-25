@@ -82,9 +82,9 @@ $(document).ready(function () {
 	// otherwise move it off of the screen.
 	var rollPanel = function rollPanel(panel) {
 		if (panel.hasClass('offscreen_left_panel')) {
-			panel.addClass('spinning');
+			panel.addClass('spinning', 0);
 			panel.switchClass('offscreen_left_panel', 'onscreen_panel', 1500, function() {
-				panel.removeClass('spinning');
+				panel.removeClass('spinning', 0);
 				panel.find('.quiz_text').show('puff');
 				panel.find('#continue_button').show('puff');
 			});
@@ -92,13 +92,13 @@ $(document).ready(function () {
 		else if (panel.hasClass('onscreen_panel')) {
 			panel.find('.quiz_text').hide('puff');
 			panel.find('#continue_button').hide('puff');
-			panel.addClass('spinning');
+			panel.addClass('spinning', 0);
 			panel.switchClass('onscreen_panel', 'offscreen_right_panel', 1500, function() {
-				panel.removeClass('spinning');
+				panel.removeClass('spinning', 0);
 				// after animation, invisibly move the panel off the left side of the screen
 				// so it will be prepared to roll on-screen next time.
-				panel.removeClass('offscreen_right_panel');
-				panel.addClass('offscreen_left_panel');
+				panel.removeClass('offscreen_right_panel', 0);
+				panel.addClass('offscreen_left_panel', 0);
 			});
 		}
 	};

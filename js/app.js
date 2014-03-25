@@ -111,6 +111,7 @@ $(document).ready(function () {
 					else {
 						playSound('miss_shot');
 					}
+					updateScore();
 				}
 				else {
 					stopSounds();
@@ -147,7 +148,6 @@ $(document).ready(function () {
 		if (answeredCorrectly) {
 			numCorrectAnswers++;	
 		}
-		updateScore();
 		
 		populateAnswerPanel(answeredCorrectly, quizQuestions[questionNum-1]);
 		

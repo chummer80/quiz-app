@@ -225,10 +225,10 @@ $(document).ready(function () {
 			panel.addClass('spinning', 0);
 			panel.switchClass('offscreen_left_panel', 'onscreen_panel', 1500, function() {
 				panel.removeClass('spinning', 0);
-				panel.find('.quiz_text').show('puff');
+				panel.find('.quiz_text').show('clip');
 				// if the panel rolling onscreen is the answer panel, play the appropriate sound for right/wrong answer
 				if (panel == answerPanel) {
-					panel.find('#continue_button').show('puff');
+					panel.find('#continue_button').show('clip');
 					if (answeredCorrectly) {
 						playSound('swish');
 					}
@@ -244,9 +244,9 @@ $(document).ready(function () {
 		}
 		else if (panel.hasClass('onscreen_panel')) {
 			if (panel == answerPanel) {
-				panel.find('#continue_button').hide('puff');
+				panel.find('#continue_button').hide('clip');
 			}
-			panel.find('.quiz_text').hide('puff');
+			panel.find('.quiz_text').hide('clip');
 			panel.addClass('spinning', 0);
 			panel.switchClass('onscreen_panel', 'offscreen_right_panel', 1500, function() {
 				panel.removeClass('spinning', 0);
@@ -296,13 +296,13 @@ $(document).ready(function () {
 		}
 		else {
 			// no more questions, show game over message
-			continueButton.hide('puff');
-			answerPanelQuizText.hide('puff', function() {
+			continueButton.hide('clip');
+			answerPanelQuizText.hide('clip', function() {
 				answerPanelQuizText.find('#result').text("GAME OVER");
 				answerPanelQuizText.find('#extra_info').text("Score: " + quizModule.getScore() + " out of " + quizModule.getNumQuizQuestions());
 				
-				newGameButton.show('puff');
-				answerPanelQuizText.show('puff', function() {
+				newGameButton.show('clip');
+				answerPanelQuizText.show('clip', function() {
 					if (quizModule.getScore() < (quizModule.getNumQuizQuestions() / 2)) {
 						// player did badly and should be booed
 						playSound('boo');
@@ -377,7 +377,7 @@ $(document).ready(function () {
 	// start new game
 	var startQuiz = function startQuiz() {
 		populateQuestionPanel();
-		questionPanelQuizText.delay(500).show('puff');
+		questionPanelQuizText.delay(500).show('clip');
 	};
 	
 		
@@ -388,8 +388,8 @@ $(document).ready(function () {
 	continueButton.click(continueQuiz);
 	
 	newGameButton.click(function() {
-		answerPanelQuizText.hide('puff');
-		newGameButton.hide('puff', function() {
+		answerPanelQuizText.hide('clip');
+		newGameButton.hide('clip', function() {
 			resetQuiz();
 			startQuiz();
 		});

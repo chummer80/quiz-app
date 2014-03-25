@@ -4,23 +4,6 @@ $(document).ready(function () {
 		var questionNum = 1;
 		var numCorrectAnswers = 0;
 		var quizQuestions = [];
-
-		// Fisher-Yates shuffle algorithm to randomize the order of questions
-		var randomizeQuestions = function randomizeQuestions() {
-			var m = quizQuestions.length, t, i;
-
-			// While there remain elements to shuffle…
-			while (m) {
-
-				// Pick a remaining element…
-				i = Math.floor(Math.random() * m--);
-
-				// And swap it with the current element.
-				t = quizQuestions[m];
-				quizQuestions[m] = quizQuestions[i];
-				quizQuestions[i] = t;
-			}
-		}
 		
 		// Define quiz questions and answers
 		{
@@ -190,6 +173,22 @@ $(document).ready(function () {
 			addToScore: function() { numCorrectAnswers++; },
 			
 			resetQuiz: function() { 
+				// Fisher-Yates shuffle algorithm to randomize the order of questions
+				var randomizeQuestions = function randomizeQuestions() {
+					var currentIndex = quizQuestions.length, tempQuestion, randomIndex;
+
+					// While there remain elements to shuffle…
+					while (currentIndex > 0) {
+						// Pick a remaining element…
+						randomIndex = Math.floor(Math.random() * currentIndex--);
+
+						// And swap it with the current element.
+						tempQuestion = quizQuestions[currentIndex];
+						quizQuestions[currentIndex] = quizQuestions[randomIndex];
+						quizQuestions[randomIndex] = tempQuestion;
+					}
+				}
+		
 				questionNum = 1;
 				numCorrectAnswers = 0;
 				randomizeQuestions();

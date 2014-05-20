@@ -86,7 +86,7 @@ main {
 	animation-timing-function: linear;
 	animation-play-state: running;
   	-webkit-animation-name: spin;
-	-webkit-animation-duration: 1.6s; 
+	-webkit-animation-duration: 1.5s; 
 	-webkit-animation-iteration-count: infinite; 
 	-webkit-animation-timing-function: linear; 
 	-webkit-animation-play-state: running;

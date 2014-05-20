@@ -240,7 +240,7 @@ $(document).ready(function () {
 		if (panel.hasClass('offscreen_left_panel')) {
 			playSound('dribbling');
 			panel.addClass('spinning', 0);
-			panel.switchClass('offscreen_left_panel', 'onscreen_panel', 1500, function() {
+			panel.switchClass('offscreen_left_panel', 'onscreen_panel', 1500, 'linear', function() {
 				panel.removeClass('spinning', 0);
 				panel.find('.quiz_text').show('clip');
 				// if the panel rolling onscreen is the answer panel, play the appropriate sound for right/wrong answer
@@ -265,7 +265,7 @@ $(document).ready(function () {
 			}
 			panel.find('.quiz_text').hide('clip');
 			panel.addClass('spinning', 0);
-			panel.switchClass('onscreen_panel', 'offscreen_right_panel', 1500, function() {
+			panel.switchClass('onscreen_panel', 'offscreen_right_panel', 1500, 'linear', function() {
 				panel.removeClass('spinning', 0);
 				// after animation, invisibly move the panel off the left side of the screen
 				// so it will be prepared to roll on-screen next time.
